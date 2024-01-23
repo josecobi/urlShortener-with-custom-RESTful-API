@@ -1,0 +1,19 @@
+<div class="container col-8 d-flex flex-column flex-nowrap justify-content-center align-items-center p-5 g-3 border border-secondary-subtle rounded bg-light-subtle mb-4">
+  <h4 class="heading-link text-center p-3 row">Paste your long URL</h4>
+  <form method="get" class="container form text-center d-flex row flex-column flex-nowrap justify-content-center align-items-center g-3">
+      <input class="urlInputBox form-control form-control-lg col-8" type="url" placeholder="Example: https://long-link-12345-abcdef.com" autofocus>
+      <button class="shortenBtn btn btn-success p-2 col-3" type="submit">Shorten URL</button>
+  </form>
+  
+  <div class="mt-2 container row text-center d-flex flex-column flex-nowrap justify-content-center align-items-center g-3">
+    <h4 class="heading-link">Your short URL:</h4>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">
+          <svg class="copy-to-clipboard" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-copy" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z"></path>
+          </svg>
+        </span>
+        <input readonly="readonly" class="shortened-link form-control form-control-lg col-8" placeholder="Example: https://short.url/ab">
+    </div>        
+</div>
+</div>
