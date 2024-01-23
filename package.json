@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodejs": "^0.0.0",
+    "nodemon": "^3.0.3"
+  },
+  "name": "urlshortenerrestfulapi",
+  "version": "1.0.0",
+  "description": "An URL shortener using NodeJS and RESTful API in  Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "keywords": [
+    "URL",
+    "shortener"
+  ],
+  "author": "Jose Lopez Cobano (CobiDev)",
+  "license": "ISC"
+}
