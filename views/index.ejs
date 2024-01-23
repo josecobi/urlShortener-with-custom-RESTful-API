@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs') %>
+<body class="bg-secondary-subtle">
+    <%- include('./partials/nav.ejs') %>
+
+    <main class="row d-flex flex-column flex-nowrap justify-content-center align-items-center page-body">
+      <%- include('./partials/cardsIndex.ejs') %>
+      
+      <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center">
+        <button class="shortenActionBtn btn btn-success p-2 col-2" type="button"><a href="shortenlinks.html" class="text-decoration-none text-light">Shorten Links</a></button>
+      </div>    
+      <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">QR codes</h2>
+          <p class="lead">Coming Soon!</p>
+        </div>
+        <div class="bg-primary-subtle shadow-sm mx-auto pt-4" style="width: 60%; height: 200px; border-radius: 21px 21px 0 0;">
+          <img src="qr-code.svg" alt="qr code icon" style="max-width: 100%; height: auto;">
+        </div>
+      </div>  
+    </main>
+    <%- include('./partials/footer.ejs') %>
+
+</body>
+</html>
