@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
-const path = require("path");
+const nanoid = require("nanoid");
+const apiKeys = require("./backend/routes/apiKeys");
+
 
 const port = 3000;
 
@@ -8,18 +10,19 @@ const port = 3000;
 app.set("view engine", "ejs");
 app.set("views", "./backend/views");
 app.use(express.static("frontend"));
-// app.use(express.static("frontend/css"));
-// app.use(express.static("frontend/helpers"));
 
 
+app.use("/apikey", apiKeys);
 
 app.get("/", (req, res) => {
     res.render('index');
 })
 
+
 app.get("/shortenlinks", (req, res) => {
     res.render('shortenlinks.ejs');
 })
+
 
 
 app.listen(port, () =>{

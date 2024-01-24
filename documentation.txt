@@ -1,0 +1,3 @@
+ //nanoid external api used to generate random strings to create api-keys
+ //https://www.npmjs.com/package/nanoid
+// Versions newer than nanoid 3 don't support require() https://github.com/ai/nanoid/issues/364#issuecomment-1150173952
