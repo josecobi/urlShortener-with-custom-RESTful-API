@@ -1,3 +1,3 @@
-let apiKeys = [];
+let apiKeys = ["example"];
 
 module.exports = apiKeys;

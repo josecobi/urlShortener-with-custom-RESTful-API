@@ -19,7 +19,7 @@ async function fetchShortUrl(longUrl){
         // In this case, the API requires to stringify the data that will be sent in the body of the request
         const inputBody = JSON.stringify({
             "url": longUrl,
-            "expiry": "30m"
+            // "expiry": "30m"
         });
         // Pass the API_KEY to the headers and store the object into the variable `headers`
         const headers = {
@@ -29,8 +29,8 @@ async function fetchShortUrl(longUrl){
         };
 
         // Call function to fetch data and wait for response
-        await fetch('https://api.manyapis.com/v1-create-short-url/',
-        // define options per APIs documentation https://docs.manyapis.com/?javascript#v1createshorturl
+        await fetch('http://127.0.0.1:3000/api/shortenUrl',
+        // define options 
         {
             method: 'POST',
             body: inputBody,

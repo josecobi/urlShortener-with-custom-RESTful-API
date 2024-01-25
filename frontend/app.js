@@ -4,7 +4,7 @@ export {form, inputBox, shortenedLink, API_KEY, getLinksBtn, listOfLinks, tableB
 
 
 // Variables for all modules
-const API_KEY = "sk_4f99a29fbce64868948b342fd520b2c0";
+const API_KEY = "example";
 
 
 // LOGIC FOR THE SHORTEN URL FUNCTION

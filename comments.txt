@@ -1,0 +1,13 @@
+used EJS as a view engine https://ejs.co/#docs 
+ 
+ nanoid external api used to generate random strings to create api-keys
+ https://www.npmjs.com/package/nanoid
+Versions newer than nanoid 3 don't support require() https://github.com/ai/nanoid/issues/364#issuecomment-1150173952
+
+Api keys are used to get new shortened links and retrieve information about the links that have been shortened.
+Links and api keys will are stored in the folder 'data'
+used static() in server.js to serve frontend javascript code, css and images for the cards. I am still confused when I have to provide the path in certain parts of my code, but I'm grasping the concept little by little.
+
+I still struggle to remember what things I need to import/expor to/from a module in Express in order to make it work. I end up figuring it out by checking the errors in the console. I am looking forward to interiorize the logic of the modules, the router, etc to automatize a little more my code writing and not having to spend time debugging.
+
+I need to get more familiar with body-parser
