@@ -4,13 +4,14 @@ import {createAnchor} from "./createanchor.js";
 // Declare function to list the links
 export async function getList(){
     try{
-        getLinksBtn.addEventListener("click", () => {
+        getLinksBtn.addEventListener("click", (event) => {
+            event.preventDefault();
             const headers = {
                 'Accept':'application/json',
                 'x-api-key': API_KEY
               };
               
-              fetch('https://api.manyapis.com/v1-list-short-url',
+              fetch('http://127.0.0.1:3000/api/getLinks',
               {
                 method: 'GET',
               
@@ -19,7 +20,8 @@ export async function getList(){
               .then(function(res) {
                   return res.json();
               }).then(function(body) {
-                  addLinksToTable(body.data);
+                console.log("body: ", body);
+                  addLinksToTable(body.linksDataArray);
               });
         })
     }
@@ -34,11 +36,12 @@ and passes the data from each object into a new row **/
 function addLinksToTable(arr){
     listOfLinks.style.display = 'block';
     // Filter the object so we get rid of the data we don't need(sid, expiry, updateAt) and keep the rest.
-    const filteredData = arr.map(({ sid, expiry, updatedAt, ...rest }) => rest);
+    // const filteredData = arr.map(({ id, expiry, updatedAt, ...rest }) => rest);
     // Clear table if there is any link
     clearLinks();
     let counter = 1;
-    filteredData.forEach((object) => {
+    // filteredData.forEach((object) => {
+        arr.forEach((object) => {
         // Number each row        
         let tableRow = document.createElement('tr');
         let rowNumber = document.createElement('th');
@@ -50,19 +53,19 @@ function addLinksToTable(arr){
         for (const property in object){
             let tableData = document.createElement('td');
             
-            if(property === 'expireAt'|| property === 'createdAt'){
+            if(property === 'createdAt'){
                 // Convert date to UTCString https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toJSON
                 object[property] = new Date(object[property]).toUTCString();
             }
             // Make links clickable and add them to the row
-            if(property === 'url'|| property === 'shortUrl'){
+            if(property === 'longUrl'|| property === 'shortUrl'){
                 const anchor = createAnchor(object[property], counter);
                 tableData.setAttribute("style", "max-width: 40rem;");
                 tableData.setAttribute("class", "overflow-auto");
                 
                 tableData.appendChild(anchor);
                 tableRow.appendChild(tableData);
-                if(property === 'url'){
+                if(property === 'longUrl'){
                     tableData.setAttribute("class", "d-none d-sm-block overflow-auto");
                     originalLink.setAttribute("class", "d-none d-sm-block overflow-auto")
                 }

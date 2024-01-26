@@ -5,6 +5,11 @@ const apiKeysRoute = require("./backend/routes/createApiKey");
 const apiKeysData = require('./backend/data/apiKeys');
 const shortenUrl = require("./backend/routes/shortenUrl");
 const bodyParser = require("body-parser");
+const getLinks = require("./backend/routes/getLinks");
+
+const links = require('./backend/data/links');
+const error = require("./backend/utilities/error");
+
 
 
 const port = 3000;
@@ -21,8 +26,8 @@ app.use(express.static("frontend"));
 //middleware to check for API keys!
 app.use("/api", function (req, res, next) {
     var key = req.headers["x-api-key"];
-    console.log(key);
-    console.log(apiKeysData);
+    console.log("key: ", key);
+    console.log("apikeys data:", apiKeysData);
     // Check for the absence of a key.
     if (!key) next(error(400, "API Key Required"));
     
@@ -32,33 +37,60 @@ app.use("/api", function (req, res, next) {
     // Valid key! Store it in req.key for route access.
     req.key = key;
     next();
-  });
+});
 
 // Use routes
 app.use("/apikey", apiKeysRoute);
 app.use("/api/shortenUrl", shortenUrl);
+app.use("/api/getLinks", getLinks);
 
 // Render home
 app.get("/", (req, res) => {
     res.render('index');
 })
 
+
 // Render view for the shortenning links page
 app.get("/shortenlinks", (req, res) => {
     res.render('shortenlinks.ejs');
 })
+
+app.get('/:shortUrl', (req, res) => {
+    const shortUrlParam = req.params.shortUrl;
+
+    //loop through the array of objects that contain links data  
+    let foundLink = null;
+    for (const obj of links) {
+        const linksData = obj.linksData;
+        // find the link with the matching shortUrl
+        const link = linksData.find((link) => link.shortUrl === shortUrlParam);
+        if (link) {
+            foundLink = link;
+            break;
+        }
+    }
+
+    if (foundLink) {
+        //redirect to the longUrl
+        res.redirect(foundLink.longUrl);
+    } else {
+        //handle error
+        res.status(404).send('Short URL not found');
+    }
+});
 // 404 Middleware
 app.use((req, res, next) => {
     next(error(404, "Resource Not Found"));
-  });
+});
 
 //Error-handling middleware
-  app.use((err, req, res, next) => {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({ error: err.message });
-  });
+});
+
 
 //Start server
 app.listen(port, () =>{
-console.log(`App listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 })

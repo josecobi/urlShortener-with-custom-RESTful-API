@@ -13,11 +13,25 @@ class Link {
         this.createdAt = new Date();
 
     }  
+     //create method to update shortUrl
+     updateShortUrl() {
+        this.shortUrl = nanoid();
+    }
+
+    //create method to delete the link
+    deleteLink() {
+        //delete link
+        const index = links.findIndex((element) => element.id === this.id);
+
+        if (index !== -1) {
+            links.splice(index, 1);
+        }
+    }
 }
 router
 .route("/")
 .post((req, res) => {
-    console.log(apiKeysData);
+    
     const apiKey = req.headers['x-api-key'];
     const longUrl = req.body.url;
     if(!longUrl){
@@ -39,6 +53,7 @@ router
         links.push(apiKeyLinks);
         res.send({ shortUrl : link.shortUrl});
     }
+    // If it exists, push the link to the element
     else{
         let link = new Link(element.linksData.length + 1, longUrl)
         element.apiKey = apiKey;
