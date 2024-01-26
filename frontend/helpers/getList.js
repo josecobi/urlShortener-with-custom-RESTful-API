@@ -36,11 +36,11 @@ and passes the data from each object into a new row **/
 function addLinksToTable(arr){
     listOfLinks.style.display = 'block';
     // Filter the object so we get rid of the data we don't need(sid, expiry, updateAt) and keep the rest.
-    // const filteredData = arr.map(({ id, expiry, updatedAt, ...rest }) => rest);
+ 
     // Clear table if there is any link
     clearLinks();
     let counter = 1;
-    // filteredData.forEach((object) => {
+
         arr.forEach((object) => {
         // Number each row        
         let tableRow = document.createElement('tr');
