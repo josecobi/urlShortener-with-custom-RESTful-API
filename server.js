@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const nanoid = require("nanoid");
 const apiKeysRoute = require("./backend/routes/createApiKey");
 const apiKeysData = require('./backend/data/apiKeys');
 const shortenUrl = require("./backend/routes/shortenUrl");
@@ -8,8 +7,8 @@ const bodyParser = require("body-parser");
 const getLinks = require("./backend/routes/getLinks");
 const links = require('./backend/data/links');
 const error = require("./backend/utilities/error");
-const findLinkByPropertyValue = require("./backend/utilities/findLinkByPropertyValue")
-
+const manipulateLink = require("./backend/routes/manipulateLink");
+const findLinkByProperty = require("./backend/utilities/findLinkByProperty")
 
 
 
@@ -44,6 +43,7 @@ app.use("/api", function (req, res, next) {
 app.use("/apikey", apiKeysRoute);
 app.use("/api/shortenUrl", shortenUrl);
 app.use("/api/getLinks", getLinks);
+app.use("/api/manipulateLink", manipulateLink);
 
 // Render home
 app.get("/", (req, res) => {
@@ -59,7 +59,7 @@ app.get("/shortenlinks", (req, res) => {
 app.get('/:shortUrl', (req, res) => {
     const shortUrlParam = req.params.shortUrl;
     //find link that matches the param provided in the request
-    let foundLink = findLinkByPropertyValue(links, "shortUrl", shortUrlParam);
+    let foundLink = findLinkByProperty(links, "shortUrl", shortUrlParam);
    
 
     if (foundLink) {

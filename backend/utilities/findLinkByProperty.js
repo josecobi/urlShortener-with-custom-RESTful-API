@@ -1,5 +1,3 @@
-
-
 function findLinkByProperty(array, propertyName, propertyValue) {
     let foundLink = null;
     //loop through the array of objects that contain links data

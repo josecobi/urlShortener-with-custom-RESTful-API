@@ -76,12 +76,99 @@ function addLinksToTable(arr){
                 tableRow.appendChild(tableData);
             }
         }
-        // Add each row to the table body
+        //add update and delete buttons to the row
+        let updateButton = createButton('Update', 'btn btn-primary', object.id, 'update');
+        let deleteButton = createButton('Delete', 'btn btn-danger', object.id, 'delete');
+        
+        let updateData = document.createElement('td');
+        updateData.appendChild(updateButton);
+        tableRow.appendChild(updateData);
+
+        let deleteData = document.createElement('td');
+        deleteData.appendChild(deleteButton);
+        tableRow.appendChild(deleteData);
+
+
+        //add each row to the table body
         tableBody.appendChild(tableRow);   
     })    
 }
 
+// Function to create a button
+function createButton(label, className, id, action) {
+    let button = document.createElement('button');
+    button.textContent = label;
+    button.setAttribute("class", className);
+    button.setAttribute("data-id", id);
+    button.setAttribute("data-action", action);
+    
+    // Attach click event listener
+    button.addEventListener("click", handleButtonClick);
+    return button;
+}
 
+//function to handle button clicks
+async function handleButtonClick(event) {
+    const id = event.target.getAttribute("data-id");
+    const action = event.target.getAttribute("data-action");
+
+    //perform action based on button clicked (update or delete)
+    if (action === 'update') {
+        try {
+            //send HTTP request to update link
+            const apiKey = API_KEY;
+
+
+            const response = await fetch(`http://127.0.0.1:3000/api/manipulateLink/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'x-api-key': apiKey
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to update link with ID ${id}`);
+            }
+
+            const body = await response.json();
+            console.log(body);
+            //if I have time, add feedback for the user in the UI
+            console.log(`Link with ID ${id} updated successfully`);
+        } catch (error) {
+            console.error(error);
+            //handle error
+            alert(`Failed to update link with ID ${id}`);
+        }
+    } else if (action === 'delete') {
+        //handle delete logic 
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/manipulateLink/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'x-api-key': API_KEY
+                }
+            });
+        
+            //check the status code of the response
+            switch (response.status) {
+                case 204:
+                    console.log(`Link with ID ${id} deleted successfully`);
+                    break;
+                case 404:
+                    throw new Error('Link not found');
+                default:
+                    throw new Error(`Failed to delete link with ID ${id}`);
+            }
+        } catch (error) {
+            console.error(error);
+            alert(error.message);
+        }
+    }
+}
 // Declare a function to clear the table
 function clearLinks(){
     while (tableBody.firstChild) {

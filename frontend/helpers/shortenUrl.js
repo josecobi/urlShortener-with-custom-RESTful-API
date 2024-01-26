@@ -19,7 +19,7 @@ async function fetchShortUrl(longUrl){
         // In this case, the API requires to stringify the data that will be sent in the body of the request
         const inputBody = JSON.stringify({
             "url": longUrl,
-            // "expiry": "30m"
+           
         });
         // Pass the API_KEY to the headers and store the object into the variable `headers`
         const headers = {
