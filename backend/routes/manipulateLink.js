@@ -35,7 +35,7 @@ router
      
             //update shortUrl if the link is found
             if (linkToUpdate) {
-                linkToUpdate.shortUrl = nanoid();
+                linkToUpdate.shortUrl = nanoid(5);
                 res.json({ message: `Updated resource with ID ${id}`, link: linkToUpdate });
             } else {
                 next(error(404, "Link not found"));

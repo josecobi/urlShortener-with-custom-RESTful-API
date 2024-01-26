@@ -136,6 +136,7 @@ async function handleButtonClick(event) {
             console.log(body);
             //if I have time, add feedback for the user in the UI
             console.log(`Link with ID ${id} updated successfully`);
+            alert(`Link with ID ${id} updated successfully. Click on the button 'My Links' to see the updated list of links`);
         } catch (error) {
             console.error(error);
             //handle error
@@ -157,6 +158,7 @@ async function handleButtonClick(event) {
             switch (response.status) {
                 case 204:
                     console.log(`Link with ID ${id} deleted successfully`);
+                    alert(`Link with ID ${id} deleted successfully. Click on the button 'My Links' to see the updated list of links`);
                     break;
                 case 404:
                     throw new Error('Link not found');
