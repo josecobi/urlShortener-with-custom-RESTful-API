@@ -6,9 +6,10 @@ const apiKeysData = require('./backend/data/apiKeys');
 const shortenUrl = require("./backend/routes/shortenUrl");
 const bodyParser = require("body-parser");
 const getLinks = require("./backend/routes/getLinks");
-
 const links = require('./backend/data/links');
 const error = require("./backend/utilities/error");
+const findLinkByPropertyValue = require("./backend/utilities/findLinkByPropertyValue")
+
 
 
 
@@ -57,18 +58,9 @@ app.get("/shortenlinks", (req, res) => {
 
 app.get('/:shortUrl', (req, res) => {
     const shortUrlParam = req.params.shortUrl;
-
-    //loop through the array of objects that contain links data  
-    let foundLink = null;
-    for (const obj of links) {
-        const linksData = obj.linksData;
-        // find the link with the matching shortUrl
-        const link = linksData.find((link) => link.shortUrl === shortUrlParam);
-        if (link) {
-            foundLink = link;
-            break;
-        }
-    }
+    //find link that matches the param provided in the request
+    let foundLink = findLinkByPropertyValue(links, "shortUrl", shortUrlParam);
+   
 
     if (foundLink) {
         //redirect to the longUrl

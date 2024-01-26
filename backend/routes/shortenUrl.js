@@ -3,31 +3,11 @@ const apiKeysData = require('../data/apiKeys');
 const links = require('../data/links');
 const {nanoid} = require("nanoid");
 const error = require("../utilities/error");
-
+const findLinkByPropertyValue = require("./backend/utilities/findLinkByPropertyValue");
+const findLinkIndexById = require("./backend/utilities/findLinkIndexById");
+const Link = require("./backend/utilities/Link");
 const router = express.Router();
-class Link {
-    constructor(id, longUrl,){
-        this.id = id;
-        this.longUrl = longUrl;
-        this.shortUrl = nanoid();
-        this.createdAt = new Date();
 
-    }  
-     //create method to update shortUrl
-     updateShortUrl() {
-        this.shortUrl = nanoid();
-    }
-
-    //create method to delete the link
-    deleteLink() {
-        //delete link
-        const index = links.findIndex((element) => element.id === this.id);
-
-        if (index !== -1) {
-            links.splice(index, 1);
-        }
-    }
-}
 router
 .route("/")
 .post((req, res) => {
