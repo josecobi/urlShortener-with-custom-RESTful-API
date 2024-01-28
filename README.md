@@ -76,7 +76,7 @@ EJS (Embedded JavaScript): EJS is a simple templating language that lets you gen
 
 - **Functionality:**
   - Handles the logic for shortening URLs.
-  - Listens for form submissions, prevents default behavior, and fetches a shorter URL from the ManyApis.com API.
+  - Listens for form submissions, prevents default behavior, and fetches a shorter URL from the custom RESTful API.
   - Utilizes async functions to handle API requests and responses.
 
 ### getlist.js
@@ -144,7 +144,7 @@ The project utilizes Bootstrap (v5.3.2) for styling, providing a clean and respo
 3. Click on "My Links" in the navigation bar to view a history of shortened links.
 4. Click "Show My Links" to display the table with link details.
 
-Feel free to explore the code files (`index.js`, `shortenUrl.js`, `getlist.js`, and `index.css`) for a detailed understanding of the implementation.
+Feel free to explore the code files for a detailed understanding of the implementation.
 
 ## Contact
 
