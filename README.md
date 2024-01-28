@@ -36,13 +36,13 @@ This project is a URL shortener web application that allows users to shorten lon
 
 ## Express.js as a web server and EJS as a templating engine.
 
-Express.js: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. You're using Express to create your server, define routes, and handle HTTP requests and responses.
+Express.js: Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. Express is used to create server, define routes, and handle HTTP requests and responses.
 
-You're also using Express middleware for parsing request bodies (body-parser), serving static files, and checking API keys.
+Express middleware is used for parsing request bodies (body-parser), serving static files, and checking API keys.
 
-EJS (Embedded JavaScript): EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. You're using EJS to render views in your Express application.
+EJS (Embedded JavaScript): EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. EJS is used to render views in the Express application.
 
-The first line tells Express to use EJS as your template engine. The second line sets the views directory to ./backend/views. This is where Express will look for your EJS templates.
+ EJS is used as my template engine. Ihe views are set to directory ./backend/views. This is where Express will look for the EJS templates.
 
 ## Files and Structure
 
