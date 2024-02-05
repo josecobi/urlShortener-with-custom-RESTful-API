@@ -25,7 +25,7 @@
 
 ## Overview
 
-This project is a URL shortener web application that allows users to shorten long URLs and view a history of the links they have shortened. The application uses the [Many APIs](https://manyapis.com) service for URL shortening. The implementation includes the use of async functions, DOM manipulation, event listeners, and GET and POST methods to fetch information from the API.
+This project is a URL shortener web application that allows users to shorten long URLs and view a history of the links they have shortened. A custom RESTful API was created  for URL shortening. The implementation includes the use of async functions, DOM manipulation, event listeners, and GET, POST, PUT and DELETE methods to fetch information from the API.
 ## Screenshots
 ![Screenshot 2024-01-15 011353](https://github.com/josecobi/url-shortener/assets/58313777/c000a1dd-b750-40ca-8f8b-f305d84540c6)
 ![Screenshot 2024-01-15 011407](https://github.com/josecobi/url-shortener/assets/58313777/92750b44-44f9-41a8-b662-6c555b5180c2)
@@ -40,9 +40,7 @@ Express.js: Express is a minimal and flexible Node.js web application framework 
 
 Express middleware is used for parsing request bodies (body-parser), serving static files, and checking API keys.
 
-EJS (Embedded JavaScript): EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. EJS is used to render views in the Express application.
-
- EJS is used as my template engine. Ihe views are set to directory ./backend/views. This is where Express will look for the EJS templates.
+EJS (Embedded JavaScript): EJS is a simple templating language that lets you generate HTML markup with plain JavaScript. EJS is used to render views in the Express application.It is used as my template engine. Ihe views are set to the directory ./backend/views. This is where Express will look for the EJS templates.
 
 ## Files and Structure
 
@@ -78,7 +76,7 @@ EJS (Embedded JavaScript): EJS is a simple templating language that lets you gen
 
 - **Functionality:**
   - Handles the logic for shortening URLs.
-  - Listens for form submissions, prevents default behavior, and fetches a shorter URL from the ManyApis.com API.
+  - Listens for form submissions, prevents default behavior, and fetches a shorter URL from the custom RESTful API.
   - Utilizes async functions to handle API requests and responses.
 
 ### getlist.js
@@ -146,7 +144,7 @@ The project utilizes Bootstrap (v5.3.2) for styling, providing a clean and respo
 3. Click on "My Links" in the navigation bar to view a history of shortened links.
 4. Click "Show My Links" to display the table with link details.
 
-Feel free to explore the code files (`index.js`, `shortenUrl.js`, `getlist.js`, and `index.css`) for a detailed understanding of the implementation.
+Feel free to explore the code files for a detailed understanding of the implementation.
 
 ## Contact
 
