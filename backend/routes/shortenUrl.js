@@ -31,7 +31,7 @@ router
             const link = {
                 id : 1,
                 longUrl : longUrl,
-                shortUrl : `http://127.0.0.1/${nanoid(5)}`,
+                shortUrl : nanoid(5),
                 createdAt : new Date(),
             }
             
@@ -46,7 +46,7 @@ router
             const link = {
                 id : element.linksData.length + 1,
                 longUrl : longUrl,
-                shortUrl : `http://127.0.0.1/${nanoid(5)}`,
+                shortUrl : nanoid(5),
                 createdAt : new Date(),
             }
             element.linksData.push(link);
