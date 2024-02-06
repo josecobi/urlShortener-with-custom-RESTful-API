@@ -45,7 +45,7 @@ async function fetchShortUrl(longUrl){
         }).then(function(body) {
             console.log(body);
             const shortenedUrl = body.shortUrl;
-            shortenedLink.value = `127.0.0.0:3000/${shortenedUrl}`;
+            shortenedLink.value = `127.0.0.1:3000/${shortenedUrl}`;
             return shortenedUrl;
         });
     }
