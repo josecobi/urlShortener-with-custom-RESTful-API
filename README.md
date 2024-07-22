@@ -139,10 +139,11 @@ The project utilizes Bootstrap (v5.3.2) for styling, providing a clean and respo
 
 ## Usage
 
-1. Open `index.html` in a web browser.
-2. Paste a long URL in the input box and click "Shorten URL" to get a shortened URL.
-3. Click on "My Links" in the navigation bar to view a history of shortened links.
-4. Click "Show My Links" to display the table with link details.
+1. In the terminal navigate to the root directory of the project and type "npm start".
+2. Go to your browser and navigate to `http://localhost:3000/`.
+3. Paste a long URL in the input box and click "Shorten URL" to get a shortened URL.
+4. Click on "My Links" in the navigation bar to view a history of shortened links.
+5. Click "Show My Links" to display the table with link details.
 
 Feel free to explore the code files for a detailed understanding of the implementation.
 

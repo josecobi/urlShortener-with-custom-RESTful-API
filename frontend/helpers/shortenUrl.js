@@ -29,7 +29,7 @@ async function fetchShortUrl(longUrl){
         };
 
         // Call function to fetch data and wait for response
-        await fetch('http://127.0.0.1:3000/api/shortenUrl',
+        await fetch('http://localhost:3000/api/shortenUrl',
         // define options 
         {
             method: 'POST',
@@ -45,7 +45,7 @@ async function fetchShortUrl(longUrl){
         }).then(function(body) {
             console.log(body);
             const shortenedUrl = body.shortUrl;
-            shortenedLink.value = `127.0.0.0:3000/${shortenedUrl}`;
+            shortenedLink.value = `http://localhost:3000/${shortenedUrl}`;
             return shortenedUrl;
         });
     }

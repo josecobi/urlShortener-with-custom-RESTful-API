@@ -6,7 +6,7 @@ const apiKeys = require('../data/apiKeys');
 
 // Import module that allows us to create strings with random characters per https://www.npmjs.com/package/nanoid
 const {nanoid} = require("nanoid");
-// Declare a function to generate rand
+// Declare a function to generate random string for the apikeys
 function generateApiKey(){ 
     let newApikey;   
     do{

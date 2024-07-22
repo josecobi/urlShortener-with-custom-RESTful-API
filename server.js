@@ -8,7 +8,8 @@ const getLinks = require("./backend/routes/getLinks");
 const links = require('./backend/data/links');
 const error = require("./backend/utilities/error");
 const manipulateLink = require("./backend/routes/manipulateLink");
-const findLinkByProperty = require("./backend/utilities/findLinkByProperty")
+const findLinkByProperty = require("./backend/utilities/findLinkByProperty");
+const cors = require("cors");;
 
 
 
@@ -16,6 +17,8 @@ const port = 3000;
 // Parsing Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ extended: true }));
+// Enable CORS
+app.use(cors());
 
 //set EJS engine
 app.set("view engine", "ejs");
@@ -57,6 +60,7 @@ app.get("/shortenlinks", (req, res) => {
 })
 
 app.get('/:shortUrl', (req, res) => {
+    console.log("redirecting")
     const shortUrlParam = req.params.shortUrl;
     //find link that matches the param provided in the request
     let foundLink = findLinkByProperty(links, "shortUrl", shortUrlParam);
